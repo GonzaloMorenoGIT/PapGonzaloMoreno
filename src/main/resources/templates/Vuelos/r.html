@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="container text-center display-2">
+    <h1>Resultados de vuelos </h1>
+</div>
+<div class="container justify-content-center">
+    <div class="row">
+        <table class="table table-success table-hover text-center ">
+            <tr>
+                <th>Origen</th>
+                <th>Destino</th>
+                <th>Duracion</th>
+            </tr>
+            <tr th:each="vuelo : ${vuelos}">
+                <td th:text="${vuelo.origen}"></td>
+                <td th:text="${vuelo.destino}"></td>
+                <td th:text="${vuelo.duracion}"></td>
+            </tr>
+        </table>
+    </div>
+</div>

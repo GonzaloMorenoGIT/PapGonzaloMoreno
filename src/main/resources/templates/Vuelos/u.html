@@ -4,15 +4,19 @@
 <div class="container justify-content-center mx-auto">
     <table class="mx-auto table table-success table-hover text-center">
             <tr>
+                <th>Seleccionar</th>
                 <th>Origen</th>
-                <th>Destini</th>
+                <th>Destino</th>
                 <th>Duracion</th>
             </tr>
+        <form action="vuelos/u" method="get">
             <tr th:each="vuelo :${vuelos}">
-                <input type="hidden" name="id_vuelos" th:value="${vuelo.id}">
+                <input type="hidden" name="id" th:value="${vuelo.id}">
+                <td><input type="submit" value="Enviar" class="text-center btn btn-outline-success"></td>
                 <td th:text="${vuelo.origen}"></td>
-                <td th:text="${vuelo.desino}"></td>
+                <td th:text="${vuelo.destino}"></td>
                 <td th:text="${vuelo.duracion}"></td>
             </tr>
+        </form>
     </table>
 </div>

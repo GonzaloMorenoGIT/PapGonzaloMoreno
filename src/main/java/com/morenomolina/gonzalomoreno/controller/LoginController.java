@@ -4,6 +4,7 @@ import com.morenomolina.gonzalomoreno.entities.Usuario;
 import com.morenomolina.gonzalomoreno.exception.DangerException;
 import com.morenomolina.gonzalomoreno.helpers.PRG;
 import com.morenomolina.gonzalomoreno.services.UsuarioService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,13 +32,29 @@ public class LoginController {
     @PostMapping("c")
     public String cPost(ModelMap m,
                         @RequestParam(name = "nombreUsuario")String nombreUsuario,
-                        @RequestParam(name ="password")String password) {
+                        @RequestParam(name ="password")String password,
+                        HttpSession s) {
            Boolean validador=usuarioService.autenticarUsuario(nombreUsuario,password);
-           if (validador){
+           String redireccionamiento="";
+            Usuario usuario=usuarioService.mostrarUsuario(nombreUsuario);
+           if (validador && nombreUsuario.contains("root")){
+               s.setAttribute("usuario",usuario.getNombre());
+               redireccionamiento="redirect:/root/";
+           }else if(validador){
                System.out.println("OK");
-           }else {
-               System.out.println("No ok");
+               s.setAttribute("usuario",usuario.getNombre());
+               redireccionamiento="redirect:/login/inicio";
            }
-        return "redirect:/";
+           else {
+               s.invalidate();
+               System.out.println("No ok");
+               redireccionamiento="redirect:/";
+           }
+        return redireccionamiento;
+    }
+    @GetMapping("inicio")
+    public String inicio(ModelMap m){
+        m.put("view","Home/inicio");
+        return "_t/frame";
     }
 }

@@ -38,5 +38,8 @@ public class UsuarioService {
             }
             return  validador;
     }
+    public Usuario mostrarUsuario(String nombreUsuario){
+        return usuarioRepository.findByNombre(nombreUsuario);
+    }
 }
 

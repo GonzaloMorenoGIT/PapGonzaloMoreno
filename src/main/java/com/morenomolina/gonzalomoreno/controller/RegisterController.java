@@ -2,7 +2,6 @@ package com.morenomolina.gonzalomoreno.controller;
 
 import com.morenomolina.gonzalomoreno.entities.Usuario;
 import com.morenomolina.gonzalomoreno.services.UsuarioService;
-import org.apache.tomcat.util.http.parser.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="container text-center display-2">
+  <h1 th:text="'Bienvenido '+${session.usuario}"></h1>
+  <h1>Panel de control de Administrador</h1>
+</div>
+<div class="container">
+  <nav class="justify-content-center">
+    <h5>Elige una Opcion</h5>
+    <a href="/vuelos/c"><button>Añadir un vuelo</button></a>
+    <a href="/vuelos/r"><button>Ver Vuelos</button></a>
+    <a href="/vuelos/u"><button>Modificar vuelos</button></a>
+    <a href="/compania/c"><button>Agregar Compañia</button></a>
+  </nav>
+    <div class="container p-1 justify-content-center text-center">
+    </div>
+</div>
